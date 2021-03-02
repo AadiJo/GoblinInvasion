@@ -5,3 +5,7 @@ Goblin Invasion is a game where you are a man whos home planet has been invaded 
 
 
 Made with Python and [PyCharm IDE](https://www.jetbrains.com/pycharm/download/#section=windows)
+
+
+##Credits:
+Music: "Agoraphobia" by Must Save Jane
