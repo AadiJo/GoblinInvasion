@@ -282,7 +282,6 @@ def optionsMenu():
     settings = False
 
 
-
 def powerUp():
     global hits, powerUpCount, score
     start_ticks = pygame.time.get_ticks()
