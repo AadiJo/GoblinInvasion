@@ -3,7 +3,6 @@ import random
 import time
 import sys
 import os.path
-import tkinter
 
 beginning = True
 
