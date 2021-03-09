@@ -1,0 +1,11 @@
+1. To access the game, you need to download and open it.
+2. If it asks you to search the app store or anything similar, say no.
+3. If it says "Windows Protected Your PC", click "More info", then "run anyway".
+4. Last, if the game starts but then crashes, email me and I will try to fix the problem.
+
+For the game,
+
+1. Use the left and right arrow keys to move around.
+2. Use the down arrow key to pause.
+3. Use the up-arrow key to jump.
+4. Use the spacebar to shoot.
