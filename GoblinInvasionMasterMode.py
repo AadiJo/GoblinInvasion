@@ -747,28 +747,6 @@ while True:
             else:
                 bullets.pop(bullets.index(bullet))
 
-        # for bullet in bullets2:
-            # if goblin.visible:
-                # if bullet.y - bullet.radius < man.hit_box[1] + man.hit_box[3] and bullet.y + bullet.radius > \
-                        # man.hit_box[1]:
-                    # if bullet.x + bullet.radius > man.hit_box[0] and bullet.x - bullet.radius < man.hit_box[0] + \
-                            # man.hit_box[2]:
-                        # lives -= 1
-                        # bullets2.pop(bullets2.index(bullet))
-                # if hits != 0:
-                    # if goblin.vel > 0:
-                        # facing1 = -1
-                    # else:
-                        # facing1 = 1
-                # bullets2.append(projectile(round(goblin.x + goblin.width // 2), round(goblin.y + goblin.height // 2), 6, (220, 0, 0), facing1))
-
-            # shootLoop = 1
-
-            # if W > bullet.x > 0:
-                # bullet.x += bullet.vel
-            # else:
-                # bullets2.pop(bullets2.index(bullet))
-
         if goblin.health < goblinHealth:
             goblinCounterIsOn = True
 
