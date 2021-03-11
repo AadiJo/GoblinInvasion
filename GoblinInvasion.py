@@ -3,8 +3,6 @@ import random
 import time
 import sys
 import os.path
-import tkinter as tk
-from tkinter import messagebox
 
 beginning = True
 
@@ -105,107 +103,6 @@ def redrawGameWindow():
     return first
 
 
-def PythonTypeWriter(message):
-    for char in message:
-        sys.stdout.write(char)
-        sys.stdout.flush()
-        if char != "\n" and char != ',' and char != '.' and char != "!" and char != "?":
-            time.sleep(0.15)
-        else:
-            time.sleep(1)
-
-
-def Typer(text, WIDTH, HEIGHT, screen):
-    class Board(pygame.sprite.Sprite):
-        def __init__(self):
-            pygame.sprite.Sprite.__init__(self)
-            self.image = pygame.Surface((WIDTH, HEIGHT))
-            self.image.fill((13, 13, 13))
-            self.image.set_colorkey((13, 13, 13))
-            self.rect = self.image.get_rect()
-            self.font = pygame.font.SysFont("monospace", 20)
-
-        def add(self, letter, pos):
-            s = self.font.render(letter, 1, (255, 255, 0))
-            self.image.blit(s, pos)
-
-    class Cursor(pygame.sprite.Sprite):
-        def __init__(self, board):
-            pygame.sprite.Sprite.__init__(self)
-            self.image = pygame.Surface((3, 20))
-            self.image.fill((0, 0, 0))
-            self.text_height = 25
-            self.startText_height = 17
-            self.text_width = 10
-            # self.text_width = 15
-            self.rect = self.image.get_rect(topleft=(self.text_width, self.startText_height))
-            self.board = board
-            self.text = ''
-            self.cooldown = 0
-
-        def write(self, text):
-            self.text = list(text)
-
-        def update(self):
-            if not self.cooldown and self.text:
-                letter = self.text.pop(0)
-                if letter == '\n':
-                    self.rect.move_ip((0, self.text_height))
-                    self.rect.x = self.text_width
-                    time.sleep(1)
-                else:
-                    if letter == ',' or letter == '.' or letter == '?' or letter == '"':
-                        time.sleep(1)
-                    self.board.add(letter, self.rect.topleft)
-                    self.rect.move_ip((self.text_width, 0))
-                    if self.rect.topleft[0] >= WIDTH - 50:
-                        self.rect.move_ip((0, self.text_height))
-                        self.rect.x = self.text_width
-
-    all_sprites = pygame.sprite.Group()
-    board = Board()
-    cursor = Cursor(board)
-    all_sprites.add(cursor, board)
-
-    cursor.write(text)
-
-    # Main loop
-    running = True
-    while running:
-
-        for e in pygame.event.get():
-            if e.type == pygame.QUIT:
-                running = False
-                pygame.quit()
-
-        all_sprites.update()
-        screen.fill((0, 0, 0))
-        all_sprites.draw(screen)
-        pygame.display.flip()
-        clock.tick(10) # not importa   # Not im
-
-
-def endScreen(first):
-    global lives, Ammo, hits, score, points
-    lives = 10
-    Ammo = goblinHealth + 200
-    hits = goblinHealth
-    score = 0
-    points = 0
-    fade(W, H)
-    man.alive = False
-    pygame.mixer.music.stop()
-    run = True
-    while run:
-        win.fill((0, 0, 0))
-        win.blit(Skull, (250, 0))
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                run = False
-
-    pygame.quit()
-
-
 def MainMenu(start, begining):
     global run
     font1 = pygame.font.SysFont('timesnewroman', 40, True)
@@ -274,84 +171,12 @@ def pauseMenu():
     # break
 
 
-def optionsMenu():
-    global settings
-    print("In option Menu!")
-    settings = False
-
-
-def powerUp():
-    global hits, powerUpCount, score
-    start_ticks = pygame.time.get_ticks()
-    timer1 = time.perf_counter()
-    while True:
-        clock.tick(60)
-        timeStart = time.perf_counter()
-
-        #win.fill((255, 255, 255))
-        #man.draw(win)
-        seconds = str(timeStart - timer1)
-        seconds = '{:.2f}'.format(timeStart)
-        if float(seconds) < 2.00:
-            win.fill((255, 255, 255))
-            man.draw(win)
-        else:
-            goblin.health -= round(goblin.health / 2)
-            hits -= round(goblin.health / 2)
-            powerUpCount -= 1
-            score += round(goblin.health / 2)
-            break
-
-    fade(W, H, (255, 255, 255))
-
-
 def unpause(pause):
     if (__DEBUG_MODE__):
         print('Unpausing')
     # fade(W, H, (255, 255, 255))
     pause = False
     return pause
-
-
-def loading():
-    pygame.event.get()
-    win.fill((0, 0, 0))
-    text = font.render('Loading...', 1, (255, 255, 255))
-    win.blit(text, (350, 200))
-
-
-def message_box(subject, content):
-    root = tk.Tk()
-    root.attributes("-topmost", True)
-    root.withdraw()
-    messagebox.showinfo(subject, content)
-    try:
-        root.destroy()
-    except:
-        pass
-
-
-def typeWriter(message, x=50, y=100):
-    x2 = x
-    for char in message:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                break
-        text = font.render(str(char), 0, (255, 0, 0))
-        win.blit(text, (x, y))
-        if char != "\n" and char != ',' and char != '.' and char != '!' and char != "?":
-            time.sleep(0.075)
-            # time.sleep(0.15)
-        else:
-            time.sleep(1)
-
-        if x >= W - 50:
-            y += 30
-            x = x2
-        else:
-            x += 17
-        pygame.display.update()
 
 
 def printDEBUG(string=''):
