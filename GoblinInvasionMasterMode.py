@@ -276,7 +276,7 @@ fullscreen = False
 first = True
 third = True
 points = 0
-FPS = 40
+FPS = 60
 
 
 class player(object):
@@ -333,15 +333,15 @@ class player(object):
                 self.heartCount = 10 - lives
 
 
-                if self.walkCount + 1 >= 27:
+                if self.walkCount + 1 >= 63:
                     self.walkCount = 0
 
                 if not self.standing:
                     if self.left:
-                        window.blit(pygame.transform.scale(self.walkLeft[self.walkCount // 3], (120, 120)), (self.x, self.y))
+                        window.blit(pygame.transform.scale(self.walkLeft[self.walkCount // 7], (120, 120)), (self.x, self.y))
                         self.walkCount += 1
                     elif self.right:
-                        window.blit(pygame.transform.scale(self.walkRight[self.walkCount // 3], (120, 120)), (self.x, self.y))
+                        window.blit(pygame.transform.scale(self.walkRight[self.walkCount // 7], (120, 120)), (self.x, self.y))
                         self.walkCount += 1
                 else:
                     if self.left:
@@ -422,7 +422,7 @@ class enemy(object):
         self.end = end
         self.path = [self.x, self.end]
         self.walkCount = 0
-        self.vel = 11
+        self.vel = 9
         self.font1 = pygame.font.SysFont('timesnewroman', 15, True)
         self.hit_box = (self.x + 20, self.y + 2, 31, 65)
         self.health = health
@@ -443,14 +443,14 @@ class enemy(object):
             if not self.pause:
                 if (__DEBUG_MODE__):
                     print('Goblin drawn!')
-                if self.walkCount + 1 >= 33:
+                if self.walkCount + 1 >= 55:
                     self.walkCount = 0
 
                 if self.vel > 0:
-                    window.blit(pygame.transform.scale(self.walkRight[self.walkCount // 3], (120, 120)), (self.x, self.y))
+                    window.blit(pygame.transform.scale(self.walkRight[self.walkCount // 5], (120, 120)), (self.x, self.y))
                     self.walkCount += 1
                 elif self.vel < 0:
-                    window.blit(pygame.transform.scale(self.walkLeft[self.walkCount // 3], (120, 120)), (self.x, self.y))
+                    window.blit(pygame.transform.scale(self.walkLeft[self.walkCount // 5], (120, 120)), (self.x, self.y))
                     self.walkCount += 1
 
 
@@ -530,11 +530,11 @@ class enemy(object):
     def jump(self):
         if not self.pause:
             if self.jumpCount >= -10:
-                neg = 2
+                neg = 1
                 if self.jumpCount < 0:
-                    neg = -2
+                    neg = -1
                 self.y -= (self.jumpCount ** 2) * 0.5 * neg
-                self.jumpCount -= 1
+                self.jumpCount -= 0.5
             else:
                 self.isJump = False
                 self.jumpCount = 10
@@ -630,7 +630,7 @@ while True:
 
         if shootLoop > 0:
             shootLoop += 1
-        if shootLoop > 3:
+        if shootLoop > 5:
             shootLoop = 0
 
         pos = pygame.mouse.get_pos()
@@ -809,12 +809,12 @@ while True:
 
         else:
             if man.jumpCount >= -10:
-                neg = 2
+                neg = 1
                 if man.jumpCount < 0:
-                    neg = -2
+                    neg = -1
                 if not pause:
                     man.y -= (man.jumpCount ** 2) * 0.5 * neg
-                    man.jumpCount -= 1
+                    man.jumpCount -= 0.5
             else:
                 man.isJump = False
                 man.jumpCount = 10
@@ -882,9 +882,6 @@ while True:
             pausetimeUp += float(pausetimeUp2) - pausetimeUp3
             pausetimeUp3 = pausetimeUp2
 
-
-        if goblin.dead:
-            goblin.health = 0
 
         if pause:
             pauseMenu()
