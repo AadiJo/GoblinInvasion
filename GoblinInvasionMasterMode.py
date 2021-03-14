@@ -506,11 +506,11 @@ class enemy(object):
         if not self.pause:
             if not man.isJump:
                 if man.x < self.x and self.vel > 0:
-                    self.follow = random.randrange(0, 22)
-                    if self.follow == 18:
+                    self.follow = random.randrange(0, 18)
+                    if self.follow == 15:
                         self.vel = self.vel * -1
                 if man.x > self.x and self.vel < 0:
-                    self.follow = random.randrange(0, 22)
+                    self.follow = random.randrange(0, 18)
                     if self.follow == 8:
                         self.vel = self.vel * -1
 
