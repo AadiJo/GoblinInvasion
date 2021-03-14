@@ -19,6 +19,7 @@ def resource_path(relative_path):
 def redrawGameWindow():
     global isfade, first, second
     win.blit(bg, (0, 0))
+    font1 = pygame.font.SysFont('timesnewroman', 50, True)
     if man.alive:
         if hits != 0:
             text = font.render('Time: ' + str("{:.2f}".format(float(timeIs))) + ' s', 1, (255, 255, 255))
@@ -32,9 +33,10 @@ def redrawGameWindow():
         win.blit(text, ((W - 700) - 25, 40))
         # text = font.render('Lives: ' + str(lives), 1, (255, 0, 0))
         # win.blit(text, ((W - 700) - 25, 10))
-        font1 = pygame.font.SysFont('timesnewroman', 50, True)
         text = font1.render('Goblin Invasion!', 1, (0, 128, 0))
         win.blit(text, ((W - 670) - 25, 100))
+        text = font.render('Master Mode', 1, (255, 0, 0))
+        win.blit(text, ((W - 610), 150))
     if hits == 0:
         if points == goblinHealth:
             text = font.render('Perfect Game!', 1, (0, 0, 255))
@@ -67,7 +69,7 @@ def redrawGameWindow():
                 win.blit(Skull, (180, 0))
                 replayButton.draw(win, (0, 0, 0))
                 text = font.render('You Died', 1, (255, 0, 0))
-                win.blit(text, (((W - (W / 2)) - 30), 40))
+                win.blit(text, ((((W / 2)) - 30), 40))
         elif first:
             isfade = True
             first = False
@@ -112,6 +114,8 @@ def MainMenu(start, begining):
     #win.blit(text, (400, 48))
     text = font2.render('Press a key to Start!', 1, (255, 0, 0))
     win.blit(text, (315, 580))
+    text = font.render("Move with arrow keys, shoot with spacebar", 1, (255, 255, 255))
+    win.blit(text, (250, 660))
     MainQuitButton.draw(win, (0, 0, 0))
     pos = pygame.mouse.get_pos()
     while start:

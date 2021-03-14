@@ -67,7 +67,7 @@ def redrawGameWindow():
                 win.blit(Skull, (180, 0))
                 replayButton.draw(win, (0, 0, 0))
                 text = font.render('You Died', 1, (255, 0, 0))
-                win.blit(text, (((W - (W / 2)) - 30), 40))
+                win.blit(text, ((((W / 2)) - 30), 40))
         elif first:
             isfade = True
             first = False
@@ -112,6 +112,8 @@ def MainMenu(start, begining):
     # win.blit(text, (400, 48))
     text = font2.render('Press a key to Start!', 1, (255, 0, 0))
     win.blit(text, (315, 580))
+    text = font.render("Move with arrow keys, shoot with spacebar", 1, (255, 255, 255))
+    win.blit(text, (250, 660))
     MainQuitButton.draw(win, (0, 0, 0))
     pos = pygame.mouse.get_pos()
     while start:
