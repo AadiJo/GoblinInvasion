@@ -807,8 +807,6 @@ while True:
             if keys[pygame.K_UP] or keys[pygame.K_w]:
                 if not pause:
                     man.isJump = True
-                    man.right = False
-                    man.left = False
                     man.walkCount = 0
 
         else:
