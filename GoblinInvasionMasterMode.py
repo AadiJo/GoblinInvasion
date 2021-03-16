@@ -768,7 +768,7 @@ while True:
                     if not pause and hits != 0 and lives != 0:
                         if not muted:
                             bulletSound.play()
-                        bullets.append(projectile(round(man.x + man.width // 1.5), round(man.y + man.height // 1.3), 6.5, (220  , 0, 0), facing))
+                        bullets.append(projectile(round(man.x + man.width // 2), round(man.y + man.height // 2), 6.5, (220  , 0, 0), facing))
                         bullets1.append(projectile(round(man.x + man.width // 2), round(man.y + man.height // 2), 6.5, (0, 0, 0), facing))
 
 
