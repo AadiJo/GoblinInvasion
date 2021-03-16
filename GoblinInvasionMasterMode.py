@@ -74,7 +74,7 @@ def redrawGameWindow():
             isfade = True
             first = False
 
-    if len(bullets1) == amo and hits != 0:
+    if len(bullets1) == amo and hits != 0 and lives != 0:
         text = font.render('You Ran Out of Ammo! Try Again!!', 1, (255, 0, 0))
         win.blit(text, (300, 220))
         restartButton.draw(win, (0, 0, 0))
