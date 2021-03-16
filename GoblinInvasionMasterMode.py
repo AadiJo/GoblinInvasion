@@ -584,8 +584,8 @@ class button(object):
 
 # mainloop
 font = pygame.font.SysFont('timesnewroman', 30, True)
-man = player((W - 300), (H - 120), 64, 64)
-goblin = enemy(10, (H - 120), 64, 64, (W - 100), goblinHealth)
+man = player((W - 300), (H - 120), 120, 120)
+goblin = enemy(10, (H - 120), 120, 120, (W - 100), goblinHealth)
 Mutebutton = button((0, 128, 255), 20, 40, 70, 30, 'Mute')
 Unmutebutton = button((255, 200, 0), 20, 90, 70, 30, "UnMute")
 UnpauseButton = button((0, 255, 0), 250, 300, 220, 60, 'CONTINUE', 40)
