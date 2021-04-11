@@ -249,7 +249,6 @@ pygame.mixer.music.play(-1)
 Skull = pygame.transform.scale(pygame.image.load(resource_path('Game\Skull.png')), (700, (H - 10)))
 bg = pygame.transform.scale(pygame.image.load(resource_path('Game/bg3.jpg')), (W, (H + 20)))
 MainScreen = pygame.transform.scale(pygame.image.load(resource_path('Game\Illustration.png')), (W, (H + 20)))
-star = pygame.transform.scale(pygame.image.load(resource_path('Game\star.png')), (70, 50))
 Icon = pygame.transform.scale(pygame.image.load(resource_path('Game\L9E.png')), (32, 32))
 clock = pygame.time.Clock()
 
